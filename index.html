@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>web-theme</title>
+  </head>
+  <body>
+
+    <script src="./webtheme.js"></script>
+    <script>
+      const webTheme = new WebTheme(window.localStorage);
+
+      webTheme.addTheme('testTheme', {
+        backgroundColor: 0x000000,
+        textColor: 0xffffff,
+        selectionColor: -1,
+      });
+      webTheme.applyTheme('df');
+    </script>
+  </body>
+</html>
