@@ -1,9 +1,19 @@
 class WebTheme {
   localStorage = null;
 
+  rootVars = {
+    backgroundColour: '--backgroundColour',
+    textColour: '--textColour',
+    selectionColour: '--selectionColour'
+  };
+
   constructor(localStrg) {
     if(localStrg !== undefined) this.localStorage = localStrg;
     else console.error('[web-theme] Sorry you cannot use web-theme without localStorage.');
+  }
+
+  setRootVarSettings(settingJson) {
+    this.rootVars = settingJson;
   }
 
   addTheme(thmId, thmJson) {
@@ -32,10 +42,16 @@ class WebTheme {
   applyTheme(thmId) {
     if(thmId === 'df') {
       this.localStorage.setItem('wb-currentThm', JSON.stringify({
-        backgroundColor: 0xffffff,
-        textColor: 0x000000,
-        selectionColor: -1,
+        backgroundColour: 0xffffff,
+        textColour: 0x000000,
+        selectionColour: -1,
       }));
+
+      const styleElement = document.createElement('style');
+
+      styleElement.innerText = `:root { ${this.rootVars.backgroundColour}: #ffffff; ${this.rootVars.textColour}: #000000; }`;
+
+      document.querySelector('head').appendChild(styleElement);
     } else {
 
     }

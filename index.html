@@ -13,11 +13,21 @@
     <script>
       const webTheme = new WebTheme(window.localStorage);
 
-      webTheme.addTheme('testTheme', {
-        backgroundColor: 0x000000,
-        textColor: 0xffffff,
-        selectionColor: -1,
+      // Customise the CSS root vars.
+      webTheme.setRootVarSettings({
+        backgroundColour: '--backgroundColour',
+        textColour: '--textColour',
+        selectionColor: '--selectionColour'
       });
+
+      // Add a theme to the theme list.
+      webTheme.addTheme('testTheme', {
+        backgroundColour: 0x000000,
+        textColour: 0xffffff,
+        selectionColour: -1,
+      });
+
+      // Apply a theme by given name.
       webTheme.applyTheme('df');
     </script>
   </body>
